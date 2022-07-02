@@ -1,10 +1,21 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
+
+import Logo from '../../assets/Logo.png';
+
+import './navigation.styles.scss';
 
 const Navigation = () => {
   return (
     <>
-      <div>
-        <h1>Navigation Bar</h1>
+      <div className='navigation'>
+        <Link className='logo-container' to='/'>
+          <img src={Logo} alt='logo' className='logo' />
+        </Link>
+        <div className='nav-links-container'>
+          <Link className='nav-link' to='/shop'>
+            Shop
+          </Link>
+        </div>
       </div>
       <Outlet />
     </>
