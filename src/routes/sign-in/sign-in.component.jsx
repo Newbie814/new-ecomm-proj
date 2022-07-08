@@ -1,11 +1,16 @@
 import React from 'react';
 
-import { signInWithGooglePopop } from '../../utils/firebase/firebase.utils';
+import {
+  signInWithGooglePopop,
+  createUserDocFromAuth,
+} from '../../utils/firebase/firebase.utils';
 
 const SignIn = () => {
   const logGoogleUser = async () => {
-    const reponse = await signInWithGooglePopop();
-    console.log(reponse);
+    const { user } = await signInWithGooglePopop();
+    const userDocRef = await createUserDocFromAuth(user);
+    console.log(userDocRef);
+    console.log(user);
   };
   return (
     <>
