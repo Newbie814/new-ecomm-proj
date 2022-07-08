@@ -1,11 +1,18 @@
 import React from 'react';
 
-const api = process.env.REACT_APP_FIREBASE_API_KEY;
+import { signInWithGooglePopop } from '../../utils/firebase/firebase.utils';
 
 const SignIn = () => {
-  return <div>SignIn</div>;
+  const logGoogleUser = async () => {
+    const reponse = await signInWithGooglePopop();
+    console.log(reponse);
+  };
+  return (
+    <>
+      <div>SignIn</div>
+      <button onClick={logGoogleUser}>Sign In With Google</button>
+    </>
+  );
 };
 
 export default SignIn;
-console.log(api);
-// console.log(process.env.REACT_APP_FIREBASE_API_KEY);
