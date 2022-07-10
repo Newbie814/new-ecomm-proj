@@ -5,6 +5,8 @@ import {
   createUserDocFromAuth,
 } from '../../utils/firebase/firebase.utils';
 
+import './sign-up-form.styles.scss';
+
 const defaultFormFields = {
   displayName: '',
   email: '',
@@ -17,6 +19,10 @@ const SignUpForm = () => {
   const { displayName, email, password, confirmPassword } = formFields;
 
   console.log(formFields);
+
+  const resetFormFields = () => {
+    setFormFields(defaultFormFields);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,11 +39,12 @@ const SignUpForm = () => {
       );
 
       await createUserDocFromAuth(user, { displayName });
-    } catch (err) {
-      if (!err.code === 'auth/email-already-in-use') {
+      resetFormFields();
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
         alert('Email already in use');
       } else {
-        console.log('error while creating user', err);
+        console.log('error while creating user', error);
       }
     }
   };
