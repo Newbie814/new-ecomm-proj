@@ -20,7 +20,9 @@ root.render(
     <BrowserRouter>
       <UserContextProvider>
         <ProductsContextProvider>
-          <App />
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
         </ProductsContextProvider>
       </UserContextProvider>
     </BrowserRouter>
