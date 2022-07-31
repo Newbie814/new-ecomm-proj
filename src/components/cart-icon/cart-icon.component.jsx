@@ -7,7 +7,7 @@ import './cart-icon.styles.scss';
 import { CartContext } from '../../contexts/cart.context';
 
 const CartIcon = () => {
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
 
   const toggleCartDropdown = () => setIsCartOpen(!isCartOpen);
 
@@ -18,7 +18,7 @@ const CartIcon = () => {
         className='item-count
       '
       >
-        10
+        {cartCount}
       </span>
     </div>
   );
