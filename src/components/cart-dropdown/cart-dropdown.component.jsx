@@ -12,10 +12,12 @@ import './cart-dropdown.styles.scss';
 import React from 'react';
 
 const CartDropdown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setIsCartOpen, isCartOpen } = useContext(CartContext);
+  const toggleCartDropdown = () => setIsCartOpen(!isCartOpen);
   const navigate = useNavigate();
 
   const goToCheckoutPageHandler = () => {
+    toggleCartDropdown();
     navigate('/checkout');
   };
 
