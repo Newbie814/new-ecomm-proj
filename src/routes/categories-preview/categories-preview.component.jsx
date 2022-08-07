@@ -23,18 +23,24 @@
 // };
 
 // export default Shop;
-import { Routes, Route } from 'react-router-dom';
 
-import CategoriesPreview from '../categories-preview/categories-preview.component';
+import { useContext } from 'react';
 
-import './shop.styles.scss';
+import CategoryPreview from '../../components/category-preview/category-preview.component';
 
-const Shop = () => {
+import { CategoriesContext } from '../../contexts/categories.context';
+
+const CategoriesPreview = () => {
+  const { categoriesMap } = useContext(CategoriesContext);
+
   return (
-    <Routes>
-      <Route index element={<CategoriesPreview />} />
-    </Routes>
+    <>
+      {Object.keys(categoriesMap).map((key) => {
+        const products = categoriesMap[key];
+        return <CategoryPreview key={key} title={key} products={products} />;
+      })}
+    </>
   );
 };
 
-export default Shop;
+export default CategoriesPreview;
